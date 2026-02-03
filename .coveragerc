@@ -1,5 +1,0 @@
-[run]
-omit = 
-    */tests/*
-    main.py
-    app/core/logger.py
