@@ -15,13 +15,18 @@ server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 
 try:
+    # Привязываем сокет к адресу и порту
     server_socket.bind((HOST, PORT))
     print(f'Сервер запущен на {HOST}:{PORT}')
 
+    # Переводим сокет в режим прослушивания
+    # Параметр 5 - максимальная очередь ожидающих подключений
     server_socket.listen(5)
     print('[*] Ожидание подключений...')
 
     while True:
+        # accept() блокирует выполнение до прихода нового подключения
+        # Возвращает новый сокет для общения с клиентом и адрес клиента
         client_socket, client_address = server_socket.accept()
         print(f'[+] Подключился клиент: {client_address}')
 
